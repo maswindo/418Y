@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { createClient } from "@supabase/supabase-js";
-
+import { cookies } from 'next/headers'
 
 const supabaseUrl = 'https://hohfglmwtxowakbhumgj.supabase.co'
 const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhvaGZnbG13dHhvd2FrYmh1bWdqIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTkwNjExMTYsImV4cCI6MjAxNDYzNzExNn0.43T-tx3DSYlOaJzjoAxw6zXY_IjcbHEv5RsOu98x8NQ"
@@ -17,25 +17,33 @@ export default function MoviePage() {
 
     const [isMovieExisting, setIsMovieExisting] = useState(false);
     const [hasEnteredTitle, setHasEnteredTitle] = useState(false);
+    const [isMovieButtonVisible, setIsMovieButtonVisible] = useState(true);
+
 
     const checkMovie = async () => {
-        // const { data, error } = await supabase
-        //     .from("movies")
-        //     .select()
-        //     .eq("title", title);
-        //
-        // if (error) {
-        //     console.error("Error checking for existing movie:", error);
-        //     return;
-        // }
-        if(title == "Iron Man") {
-            setIsMovieExisting(true);
-        } else {
-            setIsMovieExisting(false);
-            setHasEnteredTitle(true);
+        try {
+            const { data, error } = await supabase
+                .from("Movies")
+                .select('title')
+                .eq('title', title);
+    
+            if (error) {
+                console.error("Error checking for existing movie:", error);
+                return;
+            }
+    
+            const movieExists = data !== null && data.length > 0;
+    
+            setIsMovieExisting(movieExists);
+            setHasEnteredTitle(!movieExists);
+            setIsMovieButtonVisible(false);
+
+        } catch (error) {
+            console.error("Error checking for existing movie:", error);
         }
-        //setIsMovieExisting(data.length > 0);
+
     };
+
 
     const addMovie = async () => {
         const { data, error } = await supabase
@@ -148,7 +156,7 @@ export default function MoviePage() {
                                     className="w-2/3 border-gray-300 rounded-md shadow-sm text-black px-3"
                                 />
                                 <br></br>
-                                <label htmlFor={"Review"}> Review </label>
+                                <label htmlFor={"review"}> Review </label>
                                 <input
                                     type={"text"}
                                     id={"review"}
