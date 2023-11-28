@@ -6,19 +6,6 @@
     margin: 0;
 }
 
-body {
-    font-family: 'Lato', sans-serif;
-    color: #8D021F;
-    line-height: 1.6;
-    height: 100%;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh; /* use viewport height */
-}
-
-
 
 ul {
     list-style-type: none;
@@ -54,73 +41,7 @@ img {
     max-width: 1700px;
     margin: 0 auto;
     overflow: auto;
-    padding: 0 40px;
-}
-
-
-/* NavBar Styiling:*/
-
-.navbar {
-    background-color: #0A0A0A;
-    height: 121px;
-}
-
-.navbar .flex {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 100%;
-}
-
-.navbar .left-side {
-    display: flex;
-    align-items: center
-}
- .navbar ul {
-    display: flex;
- }
-
- .navbar .NavSignUp, .NavLogin {
-    padding: 10px;
-    color: #BFC0C0;
-    font-size: 25px;
-    margin: 0 5px;
- }
-
- .navbar .NavSignUp:hover , .NavLogin:hover{
-    border-bottom: 2px #BFC0C0 solid;
- }
-
-.navbar .container .MovieName-link{
-    font-weight: 300;
-    line-height: 1.2;
-    margin: 10px 0;
-    color: #8D021F;
-    font-size: 45px;
-}
-
-.navbar .container .RankerName-link {
-    font-weight: 300;
-    line-height: 1.2;
-    margin: 10px 0;
-    color: #5E1914;
-    font-size: 45px;
-}
-
-.NavLogo {
-    height: 100px;
-    width: auto;
-    align-items: center;
-}
-
-/* Navbar Styiling Complete */
-
-
-/* Footer Styiling*/
-
-.footer {
-    background-color: #0A0A0A;
-    height: 412px;
+    padding: 0, 40px;
 }
 
 
@@ -168,18 +89,3 @@ img {
 input[type="search"]::-webkit-search-cancel-button {
     filter: invert(24%) sepia(95%) saturate(7484%) hue-rotate(345deg) brightness(65%) contrast(88%);
 }
-
-
-/*  */
-/*  */
-
-
-/* Search List  */
- /*  */
- /*  */
-
- .MovieList{
-    min-height: 850px;
-    background-color:#BFC0C0;
-}
-
