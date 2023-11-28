@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../Search_CSS_Style/SearchingStyle.css">
+    <title>Search List</title>
+</head>
+<body>
+    
+     <!-- Nav Bar -->
+     <div class="navbar">
+
+        <div class="container flex">
+
+            <div class="left-side">
+                <a href="main.html">
+                    <img src="components/logo-no-background.png" alt="Descriptive Text" class="NavLogo">
+                </a>
+                <a href="main.html" class="MovieName-link">Movie </a> 
+                <a href="main.html" class="RankerName-link">Ranker</a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="SignUp.html" class= "NavSignUp">Sign Up</a></li>
+                    <li><a href="Login.html" class= "NavLogin">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+
+    </div>
+
+    <!-- Movie List -->
+    <section class="MovieList">
+<h2>hello</h2>
+    </section>
+
+    <script>
+
+        window.onload = function() {
+            // Function to get the value of a query parameter by name
+            function getSearchBarInput(name) {
+                name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+                var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+                var results = regex.exec(location.search);
+                return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+            }
+    
+            // Get the 'search' query parameter
+            var searchTerm = getSearchBarInput('searchMovie');
+    
+            // Display the search term in the MovieList section
+            if (searchTerm) {
+                var movieListSection = document.querySelector('.MovieList');
+
+                // Create a new h2 element
+                var resultHeader = document.createElement('h2');
+                resultHeader.textContent = 'You searched for: ' + searchTerm;
+
+                // Check if there's already content in MovieList section
+                if (movieListSection.firstChild) {
+                // Insert the h2 element before the first child
+                movieListSection.insertBefore(resultHeader, movieListSection.firstChild);
+                }else {
+                // If MovieList is empty, just append the h2 element
+                movieListSection.appendChild(resultHeader);
+                }
+            }
+        }
+
+    </script>
+    
+
+     <!-- Footer -->
+
+     <div class="footer">
+        <div class="container flex">
+            
+
+
+        </div>
+    </div>
+
+</body>
+</html>
